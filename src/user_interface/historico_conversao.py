@@ -3,6 +3,7 @@ import sqlite3
 import json
 import time
 from user_interface import menu
+import zipfile
 
 
 def exibe_historico_conversao(usuario_id):
@@ -84,6 +85,8 @@ def exportar_historico_conversoes(usuario_id):
 
     historico = cursor.fetchall()
 
+    nome_arquivo_json = f'historico_usuario_{usuario_id}.json'
+
     if historico:
         # Converter o histórico de conversão em uma lista de dicionários
         historico_convertido = []
@@ -98,17 +101,24 @@ def exportar_historico_conversoes(usuario_id):
             })
 
         # Exportar o histórico de conversões para um arquivo JSON
-        nome_arquivo = f'historico_usuario_{usuario_id}.json'
-        with open(nome_arquivo, 'w') as file:
-            json.dump(historico_convertido, file, indent=4)
-
-        print(f"\nHistórico de conversões do usuário {
-              usuario_id} exportado para '{nome_arquivo}'.\n")
-        time.sleep(2)
+        with open(nome_arquivo_json, 'w') as arquivo_json:
+            json.dump(historico_convertido, arquivo_json, indent=4)
+        
+        # Criar um arquivo ZIP e adicionar o arquivo JSON ao ZIP
+        nome_arquivo_zip = f'historico_usuario_{usuario_id}.zip'
+        with zipfile.ZipFile(nome_arquivo_zip, 'w') as zip_file:
+            zip_file.write(nome_arquivo_json)
+        
+        print(f"\nHistórico de conversões do usuário {usuario_id} exportado para '{nome_arquivo_json}' e compactado em '{nome_arquivo_zip}'.\n")
+        time.sleep(3)
         os.system("cls")
+        exibe_historico_conversao(usuario_id)
+
     else:
         print("\nNenhum registro de conversão encontrado para este usuário.\n")
         time.sleep(2)
         os.system("cls")
-
+        exibe_historico_conversao(usuario_id)
     banco.close()
+
+    return nome_arquivo_json, nome_arquivo_zip

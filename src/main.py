@@ -1,7 +1,9 @@
 import os
 import sqlite3
-from user_interface import menu_principal, login, menu
+from user_interface import menu_principal, login, menu, historico_conversao, historico_cotacao
+from flask import Flask, send_file
 
+app = Flask(__name__)
 
 os.system("cls")
 
@@ -11,6 +13,17 @@ banco = sqlite3.connect('mybase.db')
 
 menu_principal.tela_bem_vindo()
 # menu.meu_menu()
+
+@app.route('/download/<int:usuario_id>')
+def download_historico(usuario_id):
+    nome_arquivo_json, nome_arquivo_zip = historico_conversao.exportar_historico_conversoes(usuario_id)
+    print("teste")
+    return send_file(nome_arquivo_zip, as_attachment=True)
+
+    # Defina outras rotas 
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 # Função para criar o banco de dados
 def criar_db():
@@ -70,7 +83,7 @@ def fazer_select():
     cursor = banco.cursor()
 
     # Exemplo de SELECT
-    cursor.execute("SELECT * FROM historico_cotacoes")
+    cursor.execute("SELECT * FROM usuarios")
     rows = cursor.fetchall()
 
     # Exibir os resultados
@@ -79,4 +92,4 @@ def fazer_select():
 
     banco.close()
 # exibe_cotacao.registrar_cotacao(1, 'USD', 'BRL', 0.44, '2000-01-01')
-#fazer_select()
+# fazer_select()
