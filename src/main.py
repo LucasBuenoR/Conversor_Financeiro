@@ -1,29 +1,14 @@
 import os
 import sqlite3
-from user_interface import menu_principal, login, menu, historico_conversao, historico_cotacao
-from flask import Flask, send_file
+from user_interface import menu_principal, login, menu
 
-app = Flask(__name__)
-
-os.system("cls")
-
-# conectando no banco
-banco = sqlite3.connect('mybase.db')
-# cursor = banco.cursor()
 
 menu_principal.tela_bem_vindo()
-# menu.meu_menu()
 
-@app.route('/download/<int:usuario_id>')
-def download_historico(usuario_id):
-    nome_arquivo_json, nome_arquivo_zip = historico_conversao.exportar_historico_conversoes(usuario_id)
-    print("teste")
-    return send_file(nome_arquivo_zip, as_attachment=True)
+# conectando no banco
+# banco = sqlite3.connect('mybase.db')
+# cursor = banco.cursor()
 
-    # Defina outras rotas 
-
-if __name__ == "__main__":
-    app.run(debug=True)
 
 # Função para criar o banco de dados
 def criar_db():

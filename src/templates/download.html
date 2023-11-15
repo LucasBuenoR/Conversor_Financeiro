@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Download de Arquivos</title>
+</head>
+
+<body>
+    <h1>Download de Arquivos</h1>
+    <p>
+        <a href="{{ url_for('serve_file', filename=json_file) }}" download>Download JSON</a>
+    </p>
+    <p>
+        <a href="{{ url_for('serve_file', filename=zip_file) }}" download>Download ZIP</a>
+    </p>
+</body>
+
+</html>
