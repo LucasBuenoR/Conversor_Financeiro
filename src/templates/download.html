@@ -1,18 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <title>Download de Arquivos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
-    <h1>Download de Arquivos</h1>
+    <h1>Histórico de conversões</h1>
     <p>
-        <a href="{{ url_for('serve_file', filename=json_file) }}" download>Download JSON</a>
+        <button><a href="{{ url_for('serve_file', filename=json_file) }}" download>Download JSON</a></button>
     </p>
     <p>
-        <a href="{{ url_for('serve_file', filename=zip_file) }}" download>Download ZIP</a>
+        <button><a href="{{ url_for('serve_file', filename=zip_file) }}" download>Download ZIP</a></button>
     </p>
 </body>
 

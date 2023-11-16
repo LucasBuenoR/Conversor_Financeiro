@@ -1,13 +1,13 @@
 from flask import Flask, render_template, send_file, url_for
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def download_arquivo():
     caminho_arquivo = '/historico_usuario_1.json'
     json_file = caminho_arquivo
-    #zip_file = "caminho_do_seu_arquivo_zip.zip" 
-    return render_template('download.html', json_file=json_file) #, zip_file=zip_file)
+    # zip_file = caminho_arquivo_1
+    return render_template('download.html', json_file=json_file)# zip_file=zip_file)
 
 @app.route('/download/<filename>')
 def serve_file(filename):
