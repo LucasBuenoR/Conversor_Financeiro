@@ -85,7 +85,7 @@ def exportar_historico_conversoes(usuario_id):
 
     historico = cursor.fetchall()
 
-    nome_arquivo_json = f'historico_usuario_{usuario_id}.json'
+    nome_arquivo_json = f'src/historico_usuario_{usuario_id}.json'
 
     if historico:
         # Converter o histórico de conversão em uma lista de dicionários
@@ -105,9 +105,9 @@ def exportar_historico_conversoes(usuario_id):
             json.dump(historico_convertido, arquivo_json, indent=4)
         
         # Criar um arquivo ZIP e adicionar o arquivo JSON ao ZIP
-        nome_arquivo_zip = f'historico_usuario_{usuario_id}.zip'
+        nome_arquivo_zip = f'src/historico_usuario_{usuario_id}.zip'
         with zipfile.ZipFile(nome_arquivo_zip, 'w') as zip_file:
-            zip_file.write(nome_arquivo_json)
+            zip_file.write(nome_arquivo_json, arcname='historico_usuario.json')
         
         print(f"\nHistórico de conversões do usuário {usuario_id} exportado para '{nome_arquivo_json}' e compactado em '{nome_arquivo_zip}'.\n")
         time.sleep(3)

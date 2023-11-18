@@ -4,16 +4,23 @@
 <head>
     <meta charset="utf-8">
     <title>Download de Arquivos</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_download.css') }}">
 </head>
 
 <body>
     <h1>Histórico de conversões</h1>
+
+    <h2>Visualizar Arquivo</h2>
+    <pre>{{ conteudo_json }}</pre>
+
     <p>
-        <button><a href="{{ url_for('serve_file', filename=json_file) }}" download>Download JSON</a></button>
+        <button><a href="{{ url_for('serve_json_file', filename=json_file) }}" download>Download JSON</a></button>
     </p>
     <p>
-        <button><a href="{{ url_for('serve_file', filename=zip_file) }}" download>Download ZIP</a></button>
+        <button><a href="{{ url_for('serve_zip_file', filename=zip_file) }}" download>Download ZIP</a></button>
+    </p>
+    <p>
+        <button><a href="{{ url_for('visualizar_arquivo') }}">Visualizar Arquivo JSON</a></button>
     </p>
 </body>
 

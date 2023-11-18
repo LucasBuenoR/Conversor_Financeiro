@@ -15,6 +15,7 @@ body {
 }
 
 button {
+    font-family: 'Roboto';
     padding: 15px;
     margin: 25px;
     border: none;
@@ -35,6 +36,15 @@ h1 {
     color: #4CAF50;
     text-align: center;
     margin-top: 10vh; /* Ajusta a margem superior para centralizar na parte superior da tela */
+    margin-bottom: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+
+    font-family: 'Roboto';
+    color: #4CAF50;
+    text-align: center;
     margin-bottom: 30px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 }
