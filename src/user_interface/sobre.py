@@ -24,7 +24,7 @@ def meu_sobre():
             "┋                                                                      ┋\n"
             "┋           • Direitos Autorais © 2023 Top.Esp.Informática •           ┋\n"
             "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝")
-    escolha = input("\n🡆 Deseja voltar para o menu inicial ([S]im/[N]ão):")
+    escolha = input("\n🡆 Deseja voltar para o menu inicial ([S]im/[N]ão):").lower()
     if (escolha == 's'):
             os.system("cls")
             menu_principal.tela_bem_vindo()

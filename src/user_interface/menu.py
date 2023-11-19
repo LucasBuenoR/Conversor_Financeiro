@@ -34,12 +34,13 @@ def meu_menu(usuario_id):
             conversao_moeda.faz_conversao(usuario_id)
 
         elif op == 2:
+            minha_chave = 'H11QRWDOIE670Q2T'
             os.system("cls")
-            acoes.inicia_acoes(usuario_id)
+            acoes.exibe_acoes(usuario_id, minha_chave)
         
         elif op == 3:
             os.system("cls")
-            # Pesquisar ticker de ativos
+            ticker.buscar_ticker(usuario_id, minha_chave)
 
         elif op == 4:
             os.system("cls")
