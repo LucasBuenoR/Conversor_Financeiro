@@ -1,9 +1,0 @@
-[
-    {
-        "moeda_origem": "JPY",
-        "moeda_destino": "BRL",
-        "valor_origem": 100000000.0,
-        "valor_convertido": 3236000.0,
-        "data_conversao": "2023-11-14"
-    }
-]
