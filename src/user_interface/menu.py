@@ -1,4 +1,4 @@
-from user_interface import menu_principal, conversao_moeda, exibe_cotacao, login, historico_conversao, historico_cotacao, acoes
+from user_interface import menu_principal, conversao_moeda, exibe_cotacao, login, historico_conversao, historico_cotacao, acoes, ticker
 import os
 import time
 
@@ -18,7 +18,7 @@ def meu_menu(usuario_id):
                 "┋                                                     ┋\n"
                 "┋          [5] Histórico de cotações                  ┋\n"
                 "┋                                                     ┋\n"
-                "┋          [6] Historico de conversões                ┋\n"
+                "┋          [6] Histórico de conversões                ┋\n"
                 "┋                                                     ┋\n"
                 "┋          [7] Notícias Financeiras                   ┋\n"
                 "┋                                                     ┋\n"
@@ -39,6 +39,7 @@ def meu_menu(usuario_id):
             acoes.exibe_acoes(usuario_id, minha_chave)
         
         elif op == 3:
+            minha_chave = 'H11QRWDOIE670Q2T'
             os.system("cls")
             ticker.buscar_ticker(usuario_id, minha_chave)
 
