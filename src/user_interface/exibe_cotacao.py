@@ -11,9 +11,9 @@ def iniciar_cotacao(usuario_id):
             "┋  • • • FORMAS DE COTAÇÃO • • •  ┋\n"
             "┋        $       ₿       €        ┋\n"
             "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝\n"
-            "[1] - Consultar principais cotações de moedas\n"
-            "[2] - Informar moedas específicas\n" 
-            "[0] - Voltar para o menu\n")
+            "\n[1] Consultar principais cotações de moedas\n"
+            "[2] Informar moedas específicas\n" 
+            "[0] Voltar para o menu\n")
     op = int(input("🡆 Escolha uma opção:"))
 
     if op == 1:
@@ -76,7 +76,7 @@ def exibir_todas_cotacoes_moedas_1(data, usuario_id):
     else:
         time.sleep(2)
         os.system("cls")
-        exibir_todas_cotacoes_moedas_1(data, usuario_id)
+        menu.meu_menu(usuario_id)
 
 def obter_cotacoes_2(usuario_id):
 
