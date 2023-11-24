@@ -40,4 +40,4 @@
   - :white_check_mark:Atualmente a aplicação tem 12 telas:flower_playing_cards:.
 
 ### <h3> Observações <h3>
-* **Depois de exportar os dados JSON:page_with_curl:, .zip:file_folder: e finalizado aplicação executar apenas o arquivo 'servidor_flask.py'
+* **Depois de exportar os dados JSON:page_with_curl:, .zip:file_folder: e finalizado aplicação executar apenas o arquivo 'servidor_flask.py'**
