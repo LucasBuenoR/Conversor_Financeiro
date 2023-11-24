@@ -45,7 +45,7 @@ def faz_conversao(usuario_id):
     moeda_destino = input("🡆 Informe a moeda de destino:")
     quantidade = float(input("🡆 Informe o valor para conversão:"))
     obter_cotacao(moeda_origem, moeda_destino, quantidade, usuario_id)
-    escolha = input("🡆 Deseja fazer outra convesão ([S]im/[N]ão):").lower()
+    escolha = input("🡆 Deseja fazer outra conversão ([S]im/[N]ão):").lower()
     if escolha == 's':
         time.sleep(2)
         os.system("cls")
