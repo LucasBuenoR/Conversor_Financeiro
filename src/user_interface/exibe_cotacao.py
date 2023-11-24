@@ -12,7 +12,7 @@ def iniciar_cotacao(usuario_id):
             "┋        $       ₿       €        ┋\n"
             "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝\n"
             "[1] - Consultar principais cotações de moedas\n"
-            "[2] - Informar moedas específicas\n" # op 2 vai armazenar no historico de cotacao 
+            "[2] - Informar moedas específicas\n" 
             "[0] - Voltar para o menu\n")
     op = int(input("🡆 Escolha uma opção:"))
 
@@ -60,12 +60,12 @@ def exibir_todas_cotacoes_moedas_1(data, usuario_id):
             "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝\n")
     if data:
         for key, value in data.items():
-            moeda = key[:3]  # Obtém apenas as três primeiras letras para exibir a moeda
+            moeda = key[:3]
             cotacao = value['bid']
             print(f"1 {moeda} igual a {cotacao} Real Brasileiro")
         print(" ")
     else:
-        print("\nNão foi possível exibir as cotações.\n")
+        print("\n【Não foi possível exibir as cotações.✗✗】\n")
     escolha = input("🡆 Voltar para o menu formas de cotação ([S]im/[N]ão):").lower()
     if escolha == 's':
         time.sleep(2)
@@ -119,7 +119,7 @@ def exibir_todas_cotacoes_moedas_2(data, usuario_id):
 
         print(" ")
     else:
-        print("\nNão foi possível exibir as cotações.\n")
+        print("\n【Não foi possível exibir as cotações.✗✗】\n")
     escolha = input("🡆 Voltar para o menu formas de cotação ([S]im/[N]ão):").lower()
     if escolha == 's':
         time.sleep(2)
@@ -136,7 +136,7 @@ def exibir_todas_cotacoes_moedas_2(data, usuario_id):
 def registrar_cotacao(usuario_id, moeda_origem, moeda_destino, taxa_cambio, data_cotacao):
         data_cotacao = datetime.now().date()
         try:
-            # Estabelecer a conexão com o banco de dados
+        
             banco = sqlite3.connect('mybase.db')
             cursor = banco.cursor()
 
@@ -150,13 +150,13 @@ def registrar_cotacao(usuario_id, moeda_origem, moeda_destino, taxa_cambio, data
             # Executar a query
             cursor.execute(query, dados)
 
-            # Commit para salvar as mudanças
+            # Commit
             banco.commit()
             # print("Conversão registrada com sucesso no histórico!")
 
-            # Fechar a conexão com o banco de dados
+            # Fechar a conexão
             banco.close()
         except sqlite3.Error as e:
-            print("Erro ao inserir dados no banco:", e)
+            print("\nErro ao inserir dados no banco:", e)
 
 

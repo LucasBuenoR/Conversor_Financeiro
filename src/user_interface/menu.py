@@ -1,4 +1,4 @@
-from user_interface import menu_principal, conversao_moeda, exibe_cotacao, login, historico_conversao, historico_cotacao, acoes, ticker
+from user_interface import menu_principal, conversao_moeda, exibe_cotacao, login, historico_conversao, historico_cotacao, acoes, ticker, noticias
 import os
 import time
 
@@ -27,7 +27,7 @@ def meu_menu(usuario_id):
                 "┋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┋\n"
                 "┋                                                     ┋\n"
                 "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝\n")
-        op = int(input("🡆 Escolha uma Opção:"))
+        op = int(input("🡆 Escolha uma opção:"))
 
         if op == 1:
             os.system("cls")
@@ -56,9 +56,10 @@ def meu_menu(usuario_id):
             historico_cotacao.exibe_historico_cotacao(usuario_id)
         
         elif op == 7:
+            minha_chave = 'H11QRWDOIE670Q2T'
             os.system("cls")
-            # Notícias Financeiras
-
+            noticias.exibir_noticias(usuario_id, minha_chave)
+            
         elif op == 0:
             os.system("cls")
             menu_principal.tela_bem_vindo()

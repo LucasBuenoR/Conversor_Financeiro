@@ -47,7 +47,7 @@ def tela_de_login():
             print("\n【Credenciais inválidas. Tente novamente. ✗✗】\n")
             time.sleep(2)
             os.system("cls")
-    # Verifica se o número de tentativas malsucedidas atingiu o máximo
+    # Verifica se o número de tentativas
     if tentativas == max_tentativas:
         opcao = input("\n🡆 Número máximo de tentativas alcançado. Deseja atualizar sua senha? ([S]im/[N]ão):")
         if opcao.lower() == 's':
@@ -69,7 +69,7 @@ def valida_login(username, senha):
     usuario_id = cursor.fetchone()
     banco.close()
     if usuario_id:
-        return usuario_id[0] # Retorna o ID do usuário se o login for bem-sucedido
+        return usuario_id[0]
         #print(usuario)
     else:
         return None

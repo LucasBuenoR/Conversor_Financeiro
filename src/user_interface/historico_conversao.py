@@ -10,7 +10,7 @@ def exibe_historico_conversao(usuario_id):
     banco = sqlite3.connect('mybase.db')
     cursor = banco.cursor()
 
-    # Consulta para obter o histórico de conversão do usuário com o ID fornecido
+    # Consulta para obter o histórico de conversão do usuário
     cursor.execute('''
         SELECT moeda_origem, moeda_destino, valor_origem, valor_convertido, data_conversao 
         FROM historico_conversoes 
@@ -20,23 +20,25 @@ def exibe_historico_conversao(usuario_id):
     historico = cursor.fetchall()
 
     if historico:
-        print(f"\nHistórico de conversões\n")
+        print("\n╔━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╗\n"
+                "┋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┋\n"
+                "┋          HISTÓRICO DE CONVERSÕES         ┋\n"
+                "┋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┋\n"
+                "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝")
         for conversao in historico:
             moeda_origem, moeda_destino, valor_origem, valor_convertido, data_conversao = conversao
             print(f"De: {moeda_origem} Para: {
                   moeda_destino} - Valor: {valor_origem} Convertido: {valor_convertido} em {data_conversao}")
-        print("\nOpções\n"
-              "[1] - Exportar histórico de conversões\n"
-              "[2] - Limpar histórico de conversões\n"
-              "[0] - Voltar para o menu")
-        escolha = int(input("==>: "))
+        print("\nOpções"
+              "\n[1] Exportar histórico de conversões\n"
+              "[2] Limpar histórico de conversões\n"
+              "[0] Voltar para o menu")
+        escolha = int(input("🡆"))
         if escolha == 1:
             exportar_historico_conversoes(usuario_id)
-        # 1 - fazer menu de opcao para o usuario escolher entre voltar para o menu ou apagar o historico
-        # 2 - ou apenas só perguntar deseja apagar o historico se Sim apaga e volta para o menu se Nao apenas volta pora o menu
         elif escolha == 2:
             limpa_historico_conversoes(usuario_id)
-            print("\nHistórico limpo!\n")
+            print("\n【Histórico limpo!】\n")
             time.sleep(2)
             os.system("cls")
         else:
@@ -45,8 +47,8 @@ def exibe_historico_conversao(usuario_id):
             os.system("cls")
             menu.meu_menu(usuario_id)
     else:
-        print("\nNenhum registro de conversão encontrado para este usuário.")
-        escolha = input("\nVoltar para o menu ([S]im/[N]ão): ").lower()
+        print("\n【Nenhum registro de conversão encontrado para este usuário.】")
+        escolha = input("\n🡆 Voltar para o menu ([S]im/[N]ão):").lower()
         if escolha == 's':
             time.sleep(2)
             os.system("cls")
@@ -62,7 +64,7 @@ def limpa_historico_conversoes(usuario_id):
     banco = sqlite3.connect('mybase.db')
     cursor = banco.cursor()
 
-    # Faz o delete do histórico de conversão do usuário com o ID fornecido
+    # Faz o delete do histórico de conversão do usuário
     cursor.execute('''
         DELETE 
         FROM historico_conversoes 
@@ -76,7 +78,7 @@ def exportar_historico_conversoes(usuario_id):
     banco = sqlite3.connect('mybase.db')
     cursor = banco.cursor()
 
-    # Consulta para obter o histórico de conversão do usuário com o ID fornecido
+    # Consulta para obter o histórico de conversão do usuário
     cursor.execute('''
         SELECT moeda_origem, moeda_destino, valor_origem, valor_convertido, data_conversao 
         FROM historico_conversoes 
@@ -85,7 +87,7 @@ def exportar_historico_conversoes(usuario_id):
 
     historico = cursor.fetchall()
 
-    nome_arquivo_json = f'src/historico_usuario_{usuario_id}.json'
+    nome_arquivo_json = f'src/historico_usuario.json'
 
     if historico:
         # Converter o histórico de conversão em uma lista de dicionários
@@ -104,18 +106,18 @@ def exportar_historico_conversoes(usuario_id):
         with open(nome_arquivo_json, 'w') as arquivo_json:
             json.dump(historico_convertido, arquivo_json, indent=4)
         
-        # Criar um arquivo ZIP e adicionar o arquivo JSON ao ZIP
-        nome_arquivo_zip = f'src/historico_usuario_{usuario_id}.zip'
+        # Cria o arquivo ZIP e adiciona o arquivo JSON ao ZIP
+        nome_arquivo_zip = f'src/historico_usuario.zip'
         with zipfile.ZipFile(nome_arquivo_zip, 'w') as zip_file:
             zip_file.write(nome_arquivo_json, arcname='historico_usuario.json')
         
-        print(f"\nHistórico de conversões do usuário {usuario_id} exportado para '{nome_arquivo_json}' e compactado em '{nome_arquivo_zip}'.\n")
+        print(f"\n【Histórico de conversões do usuário {usuario_id} exportado para '{nome_arquivo_json}' e compactado em '{nome_arquivo_zip}'.】\n")
         time.sleep(3)
         os.system("cls")
         exibe_historico_conversao(usuario_id)
 
     else:
-        print("\nNenhum registro de conversão encontrado para este usuário.\n")
+        print("\n【Nenhum registro de conversão encontrado para este usuário.】\n")
         time.sleep(2)
         os.system("cls")
         exibe_historico_conversao(usuario_id)

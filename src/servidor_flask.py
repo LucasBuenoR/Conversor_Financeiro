@@ -4,8 +4,8 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
 def download_arquivo():
-    caminho_arquivo_json = '/historico_usuario_1.json'
-    caminho_arquivo_zip = '/historico_usuario_1.zip'
+    caminho_arquivo_json = '/historico_usuario.json'
+    caminho_arquivo_zip = '/historico_usuario.zip'
     json_file = caminho_arquivo_json
     zip_file = caminho_arquivo_zip
     return render_template('download.html', json_file=json_file, zip_file=zip_file)
@@ -13,7 +13,7 @@ def download_arquivo():
 
 @app.route('/visualizar')
 def visualizar_arquivo():
-    caminho_arquivo_json = '/my_app/src/historico_usuario_1.json'
+    caminho_arquivo_json = '/my_app/src/historico_usuario.json'
     with open(caminho_arquivo_json, 'r') as json_file:
         conteudo_json = json_file.read()
     return render_template('visualizar.html', json_file=caminho_arquivo_json, conteudo_json=conteudo_json)
