@@ -26,8 +26,7 @@ def exibe_historico_cotacao(usuario_id):
                 "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝")
         for cotacao in historico:
             moeda_origem, moeda_destino, taxa_cambio, data_cotacao = cotacao
-            print(f"De: {moeda_origem} Para: {
-                  moeda_destino} - Valor: {taxa_cambio} em {data_cotacao}")
+            print(f"De: {moeda_origem} Para: {moeda_destino} - Valor: {taxa_cambio} em {data_cotacao}")
         print("\nOpções"
               "\n[1] Exportar histórico de cotação\n"
               "[2] Limpar histórico de cotação\n"
