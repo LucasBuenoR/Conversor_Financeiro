@@ -27,8 +27,7 @@ def exibe_historico_conversao(usuario_id):
                 "╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝")
         for conversao in historico:
             moeda_origem, moeda_destino, valor_origem, valor_convertido, data_conversao = conversao
-            print(f"De: {moeda_origem} Para: {
-                  moeda_destino} - Valor: {valor_origem} Convertido: {valor_convertido} em {data_conversao}")
+            print(f"De: {moeda_origem} Para: {moeda_destino} - Valor: {valor_origem} Convertido: {valor_convertido} em {data_conversao}")
         print("\nOpções"
               "\n[1] Exportar histórico de conversões\n"
               "[2] Limpar histórico de conversões\n"
