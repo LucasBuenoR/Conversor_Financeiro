@@ -1,4 +1,4 @@
-# <h1>Projeto Acadêmico De Tópicos Especiais Em Informática:computer::snake:<h1>
+# <h1>Projeto Acadêmico De Tópicos Especiais Em Informática :computer: :snake:<h1>
 ## <h2>:memo:Requisitos<h2>
 * **Implementar uma aplicação que contenha pelo menos dez interfaces gráficas (UI).
   O tipo de UI pode ser definido pelos integrantes: Console, Formulário ou Web.**
